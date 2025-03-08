@@ -41,6 +41,7 @@ function preload() {
   this.load.image("player", "assets/player_car.png");
   this.load.image("enemy1", "assets/car_purple.png");
   this.load.image("enemy2", "assets/car_red.png");
+  this.load.image("enemy3", "assets/car_green.png"); // Added new enemy car
   this.load.image("road", "assets/road.png");
 }
 
@@ -114,7 +115,8 @@ function update() {
 
 // Spawn a new enemy
 function spawnEnemy() {
-  const enemyType = Math.random() > 0.5 ? "enemy1" : "enemy2";
+  const enemyTypes = ["enemy1", "enemy2", "enemy3"]; // Added new enemy type
+  const enemyType = enemyTypes[Math.floor(Math.random() * enemyTypes.length)];
   const enemy = enemies.create(
     Phaser.Math.Between(0, config.width),
     -32,
